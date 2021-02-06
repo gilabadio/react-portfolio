@@ -1,46 +1,39 @@
-//you might get rid of this react import
 import React, { useState } from 'react';
-import About from './components/About';
-import Nav from './components/Nav';
-import Gallery from './components/Gallery';
-import ContactForm from './components/Contact';
+import './App.css';
 
+import About from './pages/About';
+import Portfolio from './pages/Portfolio';
+import Contact from './pages/Contact';
+import Resume from './pages/Resume';
 
-
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
-const [contactSelected, setContactSelected] = useState(false);
-const [categories] = useState([
-    {
-      name: 'commercial',
-      description: 'Photos of grocery stores, food trucks, and other commercial projects',
-    },
-    { name: 'portraits', description: 'Portraits of people in my life' },
-    { name: 'food', description: 'Delicious delicacies' },
-    { name: 'landscape', description: 'Fields, farmhouses, waterfalls, and the beauty of nature' },
-  ]);
-  
-const [ currentCategory, setCurrentCategory] = useState(categories[0]);
+  const [currentPage, setCurrentPage] = useState("About");
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'About':
+        return <About />;
+      case 'Portfolio':
+        return <Portfolio />;
+      case 'Contact':
+        return <Contact />;
+      case 'Resume':
+        return <Resume />;
+      default:
+        return <About />;
+    }
+  };
 
   return (
     <div>
-      <Nav
-       categories={categories}
-       setCurrentCategory={setCurrentCategory}
-       currentCategory={currentCategory}
-       contactSelected={contactSelected}
-       setContactSelected={setContactSelected}
-      ></Nav>
-      <main>
-      {!contactSelected ? (
-        <>
-        <Gallery currentCategory={currentCategory}></Gallery>
-        <About></About>
-        </>
-      ): (
-        <ContactForm></ContactForm>
-      )}
+      <Header currentPage={currentPage} setCurrentPage={setCurrentPage}></Header>
+      <main className="rounded container mt-5 mb-3 px-4 py-3">
+        {renderPage(currentPage)}
       </main>
+      <Footer></Footer>
     </div>
   );
 }

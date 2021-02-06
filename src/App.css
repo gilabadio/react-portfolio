@@ -1,38 +1,58 @@
-.App {
-  text-align: center;
+  
+:root{
+  --primary-color:#191716;
+  --secondary-color:#f7f4ef;  
+  --tertiary-color:#E6AF2E;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html{
+  overflow-y: scroll;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+  font: 1.125em/1.5 Arial, Helvetica, sans-serif;
+  background-color: var(--primary-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header{
+  background-image: url();
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 160px;
 }
 
-.App-link {
-  color: #61dafb;
+header .nav-link, a, a:hover, a:visited{
+  color: var(--secondary-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main{
+  background-color: var(--tertiary-color);
+  color: #ffffff!important;
+}
+
+#about-me img{
+  max-width: 240px;
+}
+
+.card{
+  background-color: transparent;
+}
+
+.card-img-top{
+  height: 300px;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.nav-link{
+  cursor: pointer;
+  border-radius: 8px;
+  padding: .25em .5em;
+}
+
+.nav-link.active{
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
